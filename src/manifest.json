@@ -1,18 +1,17 @@
 {
-  "name": "Great Extension",
-  "version": "1.0",
+  "name": "Macro Scheduler",
+  "version": "0.6",
   "description": "Build an Extension with Angular",
   "manifest_version": 2,
   "permissions": [
-    "contextMenus",
-    "activeTab",
-    "webNavigation"
+    "contextMenus"
   ],
   "background": {
+    "persistent": false,
     "scripts": [
-      "background.js"
-    ],
-    "persistent": false
+      "background.js",
+      "runtime.js"
+    ]
   },
   "browser_action": {
     "default_popup": "index.html"
