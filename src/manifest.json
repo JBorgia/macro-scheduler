@@ -4,6 +4,7 @@
   "description": "Build an Extension with Angular",
   "manifest_version": 2,
   "permissions": [
+    "activeTab",
     "contextMenus"
   ],
   "icons": {
@@ -18,6 +19,15 @@
       "runtime.js"
     ]
   },
+  "content_scripts": [{
+    "matches": ["http://*/*"],
+    "DISABLED_css": ["content-script.scss"],
+    "js": [
+      "content-script.js"
+    ],
+    "run_at": "document_end",
+    "all_frames": true
+  }],
   "browser_action": {
     "default_title": "Macro Scheduler",
     "DISABLED_default_popup": "index.html"

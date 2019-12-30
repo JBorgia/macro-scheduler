@@ -7,7 +7,9 @@ module.exports = {
   plugins: [new ExtensionReloader({
     reloadPage: true,
     entries: {
-      background: 'background'
+      'background': 'background',
+      'content-script-js': 'content-script.ts',
+      // 'content-script-css': 'content-script.scss'
     }
   })]
 }

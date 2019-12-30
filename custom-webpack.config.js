@@ -1,5 +1,20 @@
 module.exports = {
-  entry: {
-    background: 'src/background/background.ts'
+  module: {
+    rules: [{
+      test: /\.s[ac]ss$/i,
+      use: [
+        // Creates `style` nodes from JS strings
+        'style-loader',
+        // Translates CSS into CommonJS
+        'css-loader',
+        // Compiles Sass to CSS
+        'sass-loader',
+      ],
+    }, ],
   },
-}
+  entry: {
+    'background': 'src/background/background.ts',
+    'content-script-js': 'src/content-script/content-script.ts',
+    // 'content-script-css': 'src/content-script/content-script.scss'
+  },
+};
