@@ -5,6 +5,8 @@
   "manifest_version": 2,
   "permissions": [
     "activeTab",
+    "tabs",
+    "webNavigation",
     "contextMenus"
   ],
   "icons": {
@@ -12,24 +14,20 @@
     "48": "assets/robot48.png",
     "128": "assets/robot128.png"
   },
+  "content_scripts": [{
+    "matches": ["*://*/*"],
+    "js": ["contentscript.js"]
+  }],
   "background": {
     "persistent": false,
     "scripts": [
-      "background.js",
-      "runtime.js"
+      "runtime.js",
+      "background.js"
     ]
   },
-  "content_scripts": [{
-    "matches": ["http://*/*"],
-    "DISABLED_css": ["content-script.scss"],
-    "js": [
-      "content-script.js"
-    ],
-    "run_at": "document_end",
-    "all_frames": true
-  }],
   "browser_action": {
     "default_title": "Macro Scheduler",
-    "DISABLED_default_popup": "index.html"
-  }
+    "default_popup": "index.html"
+  },
+  "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'"
 }
