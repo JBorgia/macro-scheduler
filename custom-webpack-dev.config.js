@@ -1,6 +1,7 @@
 const ExtensionReloader = require('webpack-extension-reloader');
 const config = require('./custom-webpack.config');
 
+
 module.exports = {
   ...config,
   mode: 'development',
@@ -9,7 +10,7 @@ module.exports = {
       reloadPage: true,
       entries: {
         background: 'background',
-        contentscript: 'contentscript.ts',
+        contentscript: 'contentscript'
       },
     }),
   ],

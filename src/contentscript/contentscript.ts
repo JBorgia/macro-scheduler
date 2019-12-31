@@ -2,12 +2,9 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 let lastElementContext;
-
-document.addEventListener('DOMContentLoaded', () => {
-  alert('content script ran');
-  console.log('in content script');
-
-  document.addEventListener(
+window.addEventListener('load', () => {
+  console.log('contentscript running');
+  document.body.addEventListener(
     'mouseup',
     (event) => {
       console.log('event', JSON.stringify(event));
@@ -15,18 +12,4 @@ document.addEventListener('DOMContentLoaded', () => {
     },
     true
   );
-  chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
-    if (lastElementContext && lastElementContext.parentNode) {
-      lastElementContext.parentNode.removeChild(lastElementContext);
-      lastElementContext = null;
-    }
-  });
-  chrome.runtime.onMessage.addListener((message, callback) => {
-    console.log('message', message);
-    if (message === 'changeColor') {
-      chrome.tabs.executeScript({
-        code: 'document.body.style.backgroundColor="orange"',
-      });
-    }
-  });
 });

@@ -1,16 +1,15 @@
 // Copyright (c) 2012 The Chromium Authors. All rights reserved.
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
-chrome.webNavigation.onHistoryStateUpdated.addListener((details) => {
-  chrome.tabs.executeScript(null, { file: 'contentscript.js' });
-});
 
 // The onClicked callback function.
 const onClickHandler = (info, tab) => {
   console.log('item ' + info.menuItemId + ' was clicked');
   console.log('info: ' + JSON.stringify(info));
   console.log('tab: ' + JSON.stringify(tab));
-  // console.log('lastElementContext', lastElementContext);
+  // if (lastElementContext) {
+  //   console.log('lastElementContext', lastElementContext);
+  // }
 };
 
 chrome.contextMenus.onClicked.addListener(onClickHandler);
